@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
@@ -18,6 +20,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
     @Autowired
     AuthenticationController authenticationController;
+
+    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
 
     @Override
     public boolean preHandle(HttpServletRequest request,
